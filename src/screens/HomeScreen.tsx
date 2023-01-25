@@ -9,7 +9,7 @@ import {HorizontalSlider} from '../components/HorizontalSlider';
 const {width: windowWidth} = Dimensions.get('window');
 
 export const HomeScreen = () => {
-  const {nowPlayingMovies, isLoading, popularMovies} = useMovies();
+  const {nowPlaying, popular, topRated, upcoming, isLoading} = useMovies();
   const {top} = useSafeAreaInsets();
 
   if (isLoading) {
@@ -29,7 +29,7 @@ export const HomeScreen = () => {
       <View style={{marginTop: top + 20}}>
         <View style={{height: 440}}>
           <Carousel
-            data={nowPlayingMovies}
+            data={nowPlaying}
             renderItem={({item}: any) => <MoviePoster movie={item} />}
             sliderWidth={windowWidth}
             itemWidth={300}
@@ -37,10 +37,9 @@ export const HomeScreen = () => {
         </View>
 
         {/* populars movies */}
-        <HorizontalSlider title="En cine" movies={nowPlayingMovies} />
-        <HorizontalSlider title="Populares" movies={popularMovies} />
-        {/* <HorizontalSlider title="Populares" movies={popularMovies} /> */}
-        {/* <HorizontalSlider title="Populares" movies={popularMovies} /> */}
+        <HorizontalSlider title="Popular" movies={popular} />
+        <HorizontalSlider title="Top rated" movies={topRated} />
+        <HorizontalSlider title="Upcoming" movies={upcoming} />
       </View>
     </ScrollView>
   );
