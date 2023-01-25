@@ -9,7 +9,7 @@ import {HorizontalSlider} from '../components/HorizontalSlider';
 const {width: windowWidth} = Dimensions.get('window');
 
 export const HomeScreen = () => {
-  const {nowPlayingMovies, isLoading} = useMovies();
+  const {nowPlayingMovies, isLoading, popularMovies} = useMovies();
   const {top} = useSafeAreaInsets();
 
   if (isLoading) {
@@ -38,8 +38,9 @@ export const HomeScreen = () => {
 
         {/* populars movies */}
         <HorizontalSlider title="En cine" movies={nowPlayingMovies} />
-        <HorizontalSlider movies={nowPlayingMovies} />
-        <HorizontalSlider movies={nowPlayingMovies} />
+        <HorizontalSlider title="Populares" movies={popularMovies} />
+        {/* <HorizontalSlider title="Populares" movies={popularMovies} /> */}
+        {/* <HorizontalSlider title="Populares" movies={popularMovies} /> */}
       </View>
     </ScrollView>
   );
