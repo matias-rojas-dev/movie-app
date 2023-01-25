@@ -3,6 +3,7 @@ import {StackScreenProps} from '@react-navigation/stack';
 import {Text, View, Image, StyleSheet, Dimensions} from 'react-native';
 import {RootStackParams} from '../navigation/NavigationScreen';
 import {ScrollView} from 'react-native-gesture-handler';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const {height: ScreenHeigth} = Dimensions.get('screen');
 
@@ -15,11 +16,17 @@ export const DetailScreen = ({route}: Props) => {
   return (
     <ScrollView>
       <View style={styles.imageContainer}>
-        <Image source={{uri}} style={styles.posterImage} />
+        <View style={styles.imageBorder}>
+          <Image source={{uri}} style={styles.posterImage} />
+        </View>
       </View>
       <View style={styles.marginContainer}>
         <Text style={styles.subTitle}> {original_title} </Text>
         <Text style={styles.title}> {title} </Text>
+      </View>
+
+      <View style={styles.marginContainer}>
+        <Icon name="star-outline" color="gray" size={20} />
       </View>
     </ScrollView>
   );
@@ -41,8 +48,13 @@ const styles = StyleSheet.create({
 
     borderBottomEndRadius: 25,
     borderBottomStartRadius: 25,
+  },
+  imageBorder: {
+    flex: 1,
 
-    backgroundColor: 'red',
+    overflow: 'hidden',
+    borderBottomEndRadius: 25,
+    borderBottomStartRadius: 25,
   },
   posterImage: {
     flex: 1,
